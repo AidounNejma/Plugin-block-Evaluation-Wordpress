@@ -13,5 +13,15 @@
 	"textdomain": "plugin-block",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css"
+	"style": "file:./style-index.css",
+	"attributes": {
+
+		"content": {
+			"type": "string"
+		},
+
+		"radio": {
+			"type": "string"
+		}
+	}
 }

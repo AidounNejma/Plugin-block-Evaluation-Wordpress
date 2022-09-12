@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,10 +29,75 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit({attributes, setAttributes}) {
+
+	const options = [
+		{
+			label: "Danger",
+			value: "danger",
+		},
+		{
+			label: "Secondary",
+			value: "secondary",
+		},
+		{
+			label: "Success",
+			value: "success",
+		},
+		{
+			label: "Primary",
+			value: "primary",
+		},
+		{
+			label: "Warning",
+			value: "warning",
+		},
+		{
+			label: "Info",
+			value: "info",
+		},
+		{
+			label: "Light",
+			value: "light",
+		},
+		{
+			label: "Dark",
+			value: "dark",
+		},
+	];
+
+
+	const EditRadio = event => {
+		setAttributes( {radio: event.target.value });
+	}
+
+	const EditAlert = event => {
+		setAttributes({content : event.target.value});
+	}
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'plugin-block – hello from the editor!', 'plugin-block' ) }
-		</p>
+		<div class="container d-flex flex-column justify-content-center m-auto">
+
+			<div className={"alert alert-" + attributes.radio + " alert-dismissible fade show text-center myAlert"} role="alert">
+				<p class="contentAlert">{attributes.content}</p>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+
+			<form>
+				<input type="text" onChange={EditAlert} value={attributes.content} class="w-100" name="alertText"/>
+
+				<div class="containerColors d-flex justify-content-evenly align-items-center py-4">
+				{options.map((option) => (
+					<div class="choiceColor d-flex flex-row-reverse">
+						<label for="radAnswer">{option.label}</label>
+						<input type="radio" name="radAnswer" className={option.value} onChange={EditRadio}  value={option.value}/>
+				  	</div>
+            	))}
+
+				</div>
+			</form>
+
+		</div>
 	);
 }
+
