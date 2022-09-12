@@ -45,3 +45,5 @@ function create_block_plugin_block_render_callback( $attributes, $content, $bloc
 	require plugin_dir_path( __FILE__ ) . 'build/template.php';
 	return ob_get_clean();
 }
+
+

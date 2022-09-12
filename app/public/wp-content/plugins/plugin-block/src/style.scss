@@ -6,7 +6,17 @@
  */
 
 .wp-block-create-block-plugin-block {
-	background-color: #21759b;
-	color: #fff;
+	color: #000000;
 	padding: 2px;
+
+	.container{
+		max-width: 900px;
+
+		form{
+			.submit{
+				margin: 0 25%;
+			}
+		}
+	}
 }
+
