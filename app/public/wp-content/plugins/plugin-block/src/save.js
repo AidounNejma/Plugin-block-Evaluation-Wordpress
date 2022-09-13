@@ -30,6 +30,7 @@
   * @return {WPElement} Element to render.
   */
 
+/* Sauvegarder le contenu de l'édition */
 export default function Save({attributes}) {
 
 	const BlockProps = useBlockProps.save();
